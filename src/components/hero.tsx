@@ -1,8 +1,6 @@
 'use client';
 
-import { Button } from '@chakra-ui/button';
-import { Input } from '@chakra-ui/input';
-import { Box, Grid, GridItem, Heading } from '@chakra-ui/layout';
+import { Box, Button, Grid, GridItem, Heading, Input, Text, useColorMode } from '@chakra-ui/react';
 import Lottie from 'lottie-react';
 import { KeyboardEvent, useState } from 'react';
 import heroLottieFile from '~/assets/lottie/hero.json';
@@ -15,6 +13,8 @@ import { toErrorWithMessage } from '~/utils/error-handling';
 
 const Hero = () => {
   const dispatch = useAppDispatch();
+  const { colorMode } = useColorMode();
+
   const [searchGithubUsers, { isLoading }] = useGetGithubUsersMutation();
 
   const [error, setError] = useState<string | undefined>(undefined);
@@ -47,22 +47,27 @@ const Hero = () => {
   };
 
   return (
-    <Grid templateColumns={'repeat(2,minmax(0,1fr))'} gap={'4'}>
+    <Grid
+      templateColumns={{ base: 'repeat(1,minmax(0,1fr))', md: 'repeat(2,minmax(0,1fr))' }}
+      gap={'4'}
+    >
       <GridItem py={{ md: '48' }}>
         <Heading
+          textAlign={{ base: 'center', md: 'left' }}
+          fontWeight="extrabold"
+          fontSize={{ base: '4xl', md: '6xl' }}
+          color={'transparent'}
           bgGradient="linear(to-l, blue.400, teal.400)"
           bgClip="text"
-          fontSize={'6xl'}
-          fontWeight="extrabold"
+          mb={'4'}
         >
           Search Github Username
         </Heading>
 
-        <Box mt={'4'} />
-
-        <Box bgGradient="linear(to-l, blue.400, teal.400)" rounded={'md'} p="2px">
+        <Box bgGradient="linear(to-l, blue.400, teal.400)" rounded={'xl'} p="1">
           <Input
-            bg={'gray.900'}
+            bg={colorMode === 'dark' ? 'gray.900' : 'white'}
+            border={'none'}
             onKeyDown={onPressEnter}
             placeholder="e.g: crush"
             onChange={(e) => setInput(e.target.value)}
@@ -70,12 +75,16 @@ const Hero = () => {
           />
         </Box>
 
-        {error && <p className="mt-2 text-red-500 capitalize text-sm font-semibold">{error}</p>}
+        {error && (
+          <Text mt={'2'} color={'red.500'} fontSize={'sm'} fontWeight={'semibold'}>
+            {error}
+          </Text>
+        )}
 
         <Button
           colorScheme={'blue'}
           mt={'4'}
-          w={'fit-content'}
+          w={{ base: 'full', md: 'fit-content' }}
           disabled={isLoading}
           onClick={handleSubmit}
         >
@@ -95,7 +104,7 @@ const Hero = () => {
             isLoading ? loadingLottieFile : isNotFound ? notFoundLottieFile : heroLottieFile
           }
         />
-        {isLoading && <p>Searching...</p>}
+        {isLoading && <Text>Searching...</Text>}
       </GridItem>
     </Grid>
   );

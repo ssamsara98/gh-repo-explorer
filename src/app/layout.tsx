@@ -18,9 +18,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body className={inter.className} style={{ position: 'relative', top: '60px' }}>
         <Providers>
           <Header />
-          {/* <main className="relative mx-auto mb-16 max-w-7xl px-8 py-24 min-h-[99vh] dark:text-white/90 "> */}
           {children}
-          {/* </main> */}
           <Footer />
         </Providers>
       </body>

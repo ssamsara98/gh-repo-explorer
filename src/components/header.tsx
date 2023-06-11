@@ -1,23 +1,27 @@
 'use client';
 
 import { Link } from '@chakra-ui/next-js';
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, Flex, useColorMode } from '@chakra-ui/react';
 import React from 'react';
+import { ThemeSwitcher } from './theme-switcher';
 
 export const Header = () => {
+  const { colorMode } = useColorMode();
   return (
     <Box
       as="header"
-      // className="fixed left-0 right-0 top-0 z-40 bg-white/80 shadow-sm saturate-[1.8] backdrop-blur-[10px] dark:bg-black/80 dark:saturate-100"
       position={'fixed'}
       left={'0'}
       right={'0'}
       top={'0'}
+      bg={colorMode === 'dark' ? 'black' : 'white'}
+      opacity={'80%'}
       zIndex={'40'}
       shadow={'sm'}
+      backdropBlur={'10px'}
+      saturate={'1.8'}
     >
       <Container
-        // className="mx-auto flex h-[60px] max-w-7xl items-center justify-between px-8"
         maxW={'container.xl'}
         display={'flex'}
         h={'60px'}
@@ -30,10 +34,15 @@ export const Header = () => {
           display={'flex'}
           justifyContent={'center'}
           alignItems={'center'}
+          gap={'1'}
           aria-label="Homepage"
         >
           GitHub Repositories Explorer
         </Link>
+
+        <Flex alignItems={'center'} gap={'2'}>
+          <ThemeSwitcher />
+        </Flex>
       </Container>
     </Box>
   );
