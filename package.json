@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "GitHub Repositories Explorer",
   "author": "Sulthon Abdul Malik <sulthon.abdmalik@gmail.com>",
-  "license": "MIT",
+  "license": "Unlicense",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -25,6 +25,8 @@
     "framer-motion": "^10.12.16",
     "lottie-react": "^2.4.0",
     "next": "13.4.4",
+    "next-themes": "^0.2.1",
+    "node-fetch": "^3.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.9.0",

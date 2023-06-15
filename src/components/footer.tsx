@@ -6,23 +6,24 @@ import React from 'react';
 
 export const Footer = () => {
   const { colorMode } = useColorMode();
+  // const { theme } = useTheme();
   const dateNow = new Date();
 
   return (
     <Box
       as="footer"
       position={'relative'}
-      bg={colorMode === 'dark' ? 'black' : 'white'}
-      textColor={colorMode === 'dark' ? 'white' : undefined}
+      bg={colorMode === 'light' ? 'white' : 'black'}
+      textColor={colorMode === 'light' ? undefined : 'white'}
       shadow={'md'}
-      // mt={'-36'}
+      mt={'-20'}
     >
       <Divider my={'8'} />
       <Box
         display={'block'}
         textAlign={'center'}
         fontSize={'sm'}
-        textColor={colorMode === 'dark' ? 'gray.400' : 'gray.500'}
+        textColor={colorMode === 'light' ? 'gray.500' : 'gray.400'}
         pb={'8'}
       >
         <Text>©{dateNow.getUTCFullYear()} Sulthon Abdul Malik. All Rights Reserved.</Text>

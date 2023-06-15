@@ -2,29 +2,27 @@
 'use client';
 
 import { CacheProvider } from '@chakra-ui/next-js';
-import {
-  ChakraProvider,
-  ColorModeScript,
-  ThemeConfig,
-  extendTheme,
-} from '@chakra-ui/react';
-import { PropsWithChildren } from 'react';
+import { ChakraProvider, ColorModeScript, ThemeConfig, extendTheme } from '@chakra-ui/react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { store } from '~/redux/store';
 
 const config: ThemeConfig = {
-  initialColorMode: 'system',
+  initialColorMode: 'dark',
   useSystemColorMode: true,
+  disableTransitionOnChange: true,
 };
 const theme = extendTheme({ config });
 
 export function Providers({ children }: PropsWithChildren) {
   return (
     <Provider store={store}>
+      {/* <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange> */}
       <CacheProvider>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <ChakraProvider>{children}</ChakraProvider>
+        <ChakraProvider theme={theme}>{children}</ChakraProvider>
       </CacheProvider>
+      {/* </ThemeProvider> */}
     </Provider>
   );
 }

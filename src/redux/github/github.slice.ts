@@ -24,5 +24,3 @@ export const githubSlice = createSlice({
 export const { setCurrentGithubUsernames } = githubSlice.actions;
 
 export const selectCurrentGithubUser = (state: RootState) => state.github.githubUsers;
-
-// export default githubSlice.reducer;

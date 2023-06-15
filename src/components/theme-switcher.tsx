@@ -1,4 +1,3 @@
-import { MoonIcon, SunIcon, ViewIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 import { Box, Flex, Icon, useColorMode } from '@chakra-ui/react';
 import React from 'react';
@@ -6,6 +5,7 @@ import { AiOutlineGithub } from 'react-icons/ai';
 import { BsMoonFill, BsSunFill } from 'react-icons/bs';
 
 export const ThemeSwitcher = () => {
+  // const { theme, setTheme } = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -20,9 +20,9 @@ export const ThemeSwitcher = () => {
     >
       <Box onClick={toggleColorMode} _hover={{ cursor: 'pointer', opacity: '80%' }}>
         <Icon
-          as={colorMode === 'dark' ? BsSunFill : BsMoonFill}
+          as={colorMode === 'light' ? BsMoonFill : BsSunFill}
           fontSize={20}
-          color={colorMode === 'dark' ? 'yellow' : undefined}
+          color={colorMode === 'light' ? undefined : 'yellow'}
         />
       </Box>
 

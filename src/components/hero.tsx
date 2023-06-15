@@ -1,5 +1,3 @@
-'use client';
-
 import { Box, Button, Grid, GridItem, Heading, Input, Text, useColorMode } from '@chakra-ui/react';
 import Lottie from 'lottie-react';
 import { KeyboardEvent, useState } from 'react';
@@ -13,6 +11,7 @@ import { toErrorWithMessage } from '~/utils/error-handling';
 
 const Hero = () => {
   const dispatch = useAppDispatch();
+  // const { theme } = useTheme();
   const { colorMode } = useColorMode();
 
   const [searchGithubUsers, { isLoading }] = useGetGithubUsersMutation();
@@ -57,16 +56,16 @@ const Hero = () => {
           fontWeight="extrabold"
           fontSize={{ base: '4xl', md: '6xl' }}
           color={'transparent'}
-          bgGradient="linear(to-l, blue.400, teal.400)"
+          bgGradient="linear(to-r, teal.300, blue.500)"
           bgClip="text"
           mb={'4'}
         >
           Search Github Username
         </Heading>
 
-        <Box bgGradient="linear(to-l, blue.400, teal.400)" rounded={'xl'} p="1">
+        <Box bgGradient="linear(to-r, teal.300, blue.500)" rounded={'xl'} p="1">
           <Input
-            bg={colorMode === 'dark' ? 'gray.900' : 'white'}
+            bg={colorMode === 'light' ? 'white' : 'gray.800'}
             border={'none'}
             onKeyDown={onPressEnter}
             placeholder="e.g: crush"
@@ -82,7 +81,7 @@ const Hero = () => {
         )}
 
         <Button
-          colorScheme={'blue'}
+          colorScheme={'teal'}
           mt={'4'}
           w={{ base: 'full', md: 'fit-content' }}
           disabled={isLoading}

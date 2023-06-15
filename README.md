@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GitHub Repositories Explorer - (Chakra-UI)
+
+inspired by [crusherblack/github-repositories-explorer](https://github.com/crusherblack/github-repositories-explorer)
 
 ## Getting Started
 

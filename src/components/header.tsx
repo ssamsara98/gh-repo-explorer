@@ -6,6 +6,7 @@ import React from 'react';
 import { ThemeSwitcher } from './theme-switcher';
 
 export const Header = () => {
+  // const { theme } = useTheme();
   const { colorMode } = useColorMode();
   return (
     <Box
@@ -14,12 +15,13 @@ export const Header = () => {
       left={'0'}
       right={'0'}
       top={'0'}
-      bg={colorMode === 'dark' ? 'black' : 'white'}
+      bg={colorMode === 'light' ? 'white' : 'black'}
       opacity={'80%'}
       zIndex={'40'}
       shadow={'sm'}
+      backdropFilter={'auto'}
       backdropBlur={'10px'}
-      saturate={'1.8'}
+      saturate={colorMode === 'light' ? '1.8' : '1'}
     >
       <Container
         maxW={'container.xl'}
